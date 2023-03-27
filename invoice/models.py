@@ -30,13 +30,6 @@ class Invoice(models.Model):
     created_at = models.DateField(auto_now_add=True)
     due_date = models.DateField(auto_now_add=True)
 
-    def inv_json(self):
-        json.dumps(self, cls=InvoiceEncoder)
-
-class InvoiceEncoder(JSONEncoder):
-    def default(self, obj):
-        return obj.__dict__
-
 class Item(models.Model):
     description = models.CharField(max_length=200)
     additional_description = models.CharField(max_length=200)
